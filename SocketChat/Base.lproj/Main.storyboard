@@ -1,24 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nCt-01-nav">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="nSc-01-nav">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nCt-01-nav" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nBr-01-nav">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nSg-01-nav"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFr-01-nav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1042" y="118"/>
+        </scene>
+        <!--聊天-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SocketChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rSk-01-rot">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-01-sts" userLabel="Status Bar">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="36"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDt-01-sts" userLabel="Status Dot">
+                                                <rect key="frame" x="16" y="14" width="8" height="8"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="8" id="a01-01-006"/>
+                                                    <constraint firstAttribute="height" constant="8" id="a01-01-007"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="已連線" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLb-01-sts">
+                                                <rect key="frame" x="32" y="10.333333333333343" width="39" height="15.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="a01-01-005"/>
+                                            <constraint firstItem="sDt-01-sts" firstAttribute="leading" secondItem="sBr-01-sts" secondAttribute="leading" constant="16" id="a01-01-008"/>
+                                            <constraint firstItem="sDt-01-sts" firstAttribute="centerY" secondItem="sBr-01-sts" secondAttribute="centerY" id="a01-01-009"/>
+                                            <constraint firstItem="sLb-01-sts" firstAttribute="leading" secondItem="sDt-01-sts" secondAttribute="trailing" constant="8" id="a01-01-010"/>
+                                            <constraint firstItem="sLb-01-sts" firstAttribute="centerY" secondItem="sBr-01-sts" secondAttribute="centerY" id="a01-01-011"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sLb-01-sts" secondAttribute="trailing" constant="16" id="a01-01-012"/>
+                                        </constraints>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBn-01-dcn" userLabel="Disconnect Banner">
+                                        <rect key="frame" x="0.0" y="36" width="393" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="連線中斷，正在重連" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-01-dcn">
+                                                <rect key="frame" x="15.999999999999993" y="10.333333333333343" width="116.33333333333331" height="15.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="a01-01-013"/>
+                                            <constraint firstItem="dLb-01-dcn" firstAttribute="leading" secondItem="dBn-01-dcn" secondAttribute="leading" constant="16" id="a01-01-014"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dLb-01-dcn" secondAttribute="trailing" constant="16" id="a01-01-015"/>
+                                            <constraint firstItem="dLb-01-dcn" firstAttribute="centerY" secondItem="dBn-01-dcn" secondAttribute="centerY" id="a01-01-016"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="80" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-01-tbl">
+                                        <rect key="frame" x="0.0" y="36" width="393" height="500"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="IncomingMessageCell" rowHeight="80" id="iCl-01-inc" customClass="IncomingMessageCell" customModule="SocketChat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50.333333969116211" width="393" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iCl-01-inc" id="iCv-01-inc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBb-01-inc" userLabel="Bubble">
+                                                            <rect key="frame" x="16" y="6" width="56" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="1000" ambiguous="YES" text="你好" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMs-01-inc">
+                                                                    <rect key="frame" x="12" y="10" width="32" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                            <constraints>
+                                                                <constraint firstItem="iMs-01-inc" firstAttribute="top" secondItem="iBb-01-inc" secondAttribute="top" constant="10" id="a01-01-030"/>
+                                                                <constraint firstItem="iMs-01-inc" firstAttribute="leading" secondItem="iBb-01-inc" secondAttribute="leading" constant="12" id="a01-01-031"/>
+                                                                <constraint firstAttribute="trailing" secondItem="iMs-01-inc" secondAttribute="trailing" constant="12" id="a01-01-032"/>
+                                                                <constraint firstAttribute="bottom" secondItem="iMs-01-inc" secondAttribute="bottom" constant="10" id="a01-01-033"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" text="10:40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTm-01-inc">
+                                                            <rect key="frame" x="16" y="54" width="29.666666666666671" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="iBb-01-inc" firstAttribute="leading" secondItem="iCv-01-inc" secondAttribute="leading" constant="16" id="a01-01-034"/>
+                                                        <constraint firstItem="iBb-01-inc" firstAttribute="top" secondItem="iCv-01-inc" secondAttribute="top" constant="6" id="a01-01-035"/>
+                                                        <constraint firstItem="iBb-01-inc" firstAttribute="width" relation="lessThanOrEqual" secondItem="iCv-01-inc" secondAttribute="width" multiplier="0.75" priority="999" id="a01-01-036"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iBb-01-inc" secondAttribute="trailing" constant="16" id="a01-01-037"/>
+                                                        <constraint firstItem="iTm-01-inc" firstAttribute="top" secondItem="iBb-01-inc" secondAttribute="bottom" constant="4" id="a01-01-038"/>
+                                                        <constraint firstItem="iTm-01-inc" firstAttribute="leading" secondItem="iBb-01-inc" secondAttribute="leading" id="a01-01-039"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iTm-01-inc" secondAttribute="bottom" constant="6" id="a01-01-040"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="bubbleView" destination="iBb-01-inc" id="a01-01-041"/>
+                                                    <outlet property="messageLabel" destination="iMs-01-inc" id="a01-01-042"/>
+                                                    <outlet property="timeLabel" destination="iTm-01-inc" id="a01-01-043"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="OutgoingMessageCell" rowHeight="80" id="oCl-01-out" customClass="OutgoingMessageCell" customModule="SocketChat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="130.33333396911621" width="393" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oCl-01-out" id="oCv-01-out">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-01-out" userLabel="Bubble">
+                                                            <rect key="frame" x="309" y="6" width="68" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="1000" ambiguous="YES" text="在嗎？" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMs-01-out">
+                                                                    <rect key="frame" x="12" y="10" width="44" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="oMs-01-out" firstAttribute="top" secondItem="oBb-01-out" secondAttribute="top" constant="10" id="a01-01-050"/>
+                                                                <constraint firstItem="oMs-01-out" firstAttribute="leading" secondItem="oBb-01-out" secondAttribute="leading" constant="12" id="a01-01-051"/>
+                                                                <constraint firstAttribute="trailing" secondItem="oMs-01-out" secondAttribute="trailing" constant="12" id="a01-01-052"/>
+                                                                <constraint firstAttribute="bottom" secondItem="oMs-01-out" secondAttribute="bottom" constant="10" id="a01-01-053"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" text="10:41" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTm-01-out">
+                                                            <rect key="frame" x="349" y="54" width="28" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="oBb-01-out" secondAttribute="trailing" constant="16" id="a01-01-054"/>
+                                                        <constraint firstItem="oBb-01-out" firstAttribute="top" secondItem="oCv-01-out" secondAttribute="top" constant="6" id="a01-01-055"/>
+                                                        <constraint firstItem="oBb-01-out" firstAttribute="width" relation="lessThanOrEqual" secondItem="oCv-01-out" secondAttribute="width" multiplier="0.75" priority="999" id="a01-01-056"/>
+                                                        <constraint firstItem="oBb-01-out" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oCv-01-out" secondAttribute="leading" constant="16" id="a01-01-057"/>
+                                                        <constraint firstItem="oTm-01-out" firstAttribute="top" secondItem="oBb-01-out" secondAttribute="bottom" constant="4" id="a01-01-058"/>
+                                                        <constraint firstItem="oBb-01-out" firstAttribute="trailing" secondItem="oTm-01-out" secondAttribute="trailing" id="a01-01-059"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oTm-01-out" secondAttribute="bottom" constant="6" id="a01-01-060"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="bubbleView" destination="oBb-01-out" id="a01-01-061"/>
+                                                    <outlet property="messageLabel" destination="oMs-01-out" id="a01-01-062"/>
+                                                    <outlet property="timeLabel" destination="oTm-01-out" id="a01-01-063"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBx-01-typ" userLabel="Typing Row">
+                                        <rect key="frame" x="0.0" y="536" width="393" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="對方正在輸入…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLb-01-typ">
+                                                <rect key="frame" x="16" y="4.3333333333333703" width="88" height="15.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="a01-01-017"/>
+                                            <constraint firstItem="tLb-01-typ" firstAttribute="leading" secondItem="tBx-01-typ" secondAttribute="leading" constant="16" id="a01-01-018"/>
+                                            <constraint firstItem="tLb-01-typ" firstAttribute="centerY" secondItem="tBx-01-typ" secondAttribute="centerY" id="a01-01-019"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tLb-01-typ" secondAttribute="trailing" constant="16" id="a01-01-020"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-01-inp" userLabel="Input Bar">
+                                        <rect key="frame" x="0.0" y="560" width="393" height="52"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSp-01-inp" userLabel="Separator">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="0.66666666666666663"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="a01-01-021"/>
+                                                </constraints>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入訊息…" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-01-inp">
+                                                <rect key="frame" x="16" y="8" width="319" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="a01-01-022"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-01-inp">
+                                                <rect key="frame" x="347" y="11" width="30" height="30"/>
+                                                <state key="normal" title="傳送"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="a01-01-023"/>
+                                            <constraint firstItem="iSp-01-inp" firstAttribute="top" secondItem="iBr-01-inp" secondAttribute="top" id="a01-01-024"/>
+                                            <constraint firstItem="iSp-01-inp" firstAttribute="leading" secondItem="iBr-01-inp" secondAttribute="leading" id="a01-01-025"/>
+                                            <constraint firstAttribute="trailing" secondItem="iSp-01-inp" secondAttribute="trailing" id="a01-01-026"/>
+                                            <constraint firstItem="iTf-01-inp" firstAttribute="leading" secondItem="iBr-01-inp" secondAttribute="leading" constant="16" id="a01-01-027"/>
+                                            <constraint firstItem="iTf-01-inp" firstAttribute="centerY" secondItem="iBr-01-inp" secondAttribute="centerY" id="a01-01-028"/>
+                                            <constraint firstItem="iBt-01-inp" firstAttribute="leading" secondItem="iTf-01-inp" secondAttribute="trailing" constant="12" id="a01-01-029"/>
+                                            <constraint firstItem="iBt-01-inp" firstAttribute="centerY" secondItem="iBr-01-inp" secondAttribute="centerY" id="a01-01-064"/>
+                                            <constraint firstAttribute="trailing" secondItem="iBt-01-inp" secondAttribute="trailing" constant="16" id="a01-01-065"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rSk-01-rot" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a01-01-001"/>
+                            <constraint firstItem="rSk-01-rot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a01-01-002"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rSk-01-rot" secondAttribute="trailing" id="a01-01-003"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rSk-01-rot" secondAttribute="bottom" id="a01-01-004"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="聊天" id="nIt-01-nav"/>
+                    <connections>
+                        <outlet property="contentBottomConstraint" destination="a01-01-004" id="a01-01-077"/>
+                        <outlet property="contentStackView" destination="rSk-01-rot" id="a01-01-078"/>
+                        <outlet property="disconnectBanner" destination="dBn-01-dcn" id="a01-01-070"/>
+                        <outlet property="messageTextField" destination="iTf-01-inp" id="a01-01-071"/>
+                        <outlet property="sendButton" destination="iBt-01-inp" id="a01-01-072"/>
+                        <outlet property="statusDotView" destination="sDt-01-sts" id="a01-01-073"/>
+                        <outlet property="statusLabel" destination="sLb-01-sts" id="a01-01-074"/>
+                        <outlet property="tableView" destination="tBv-01-tbl" id="a01-01-075"/>
+                        <outlet property="typingLabel" destination="tLb-01-typ" id="a01-01-076"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-31" y="118"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
